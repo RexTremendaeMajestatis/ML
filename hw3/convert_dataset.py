@@ -1,13 +1,11 @@
-from numpy import pi
 import config
 from scipy.sparse import csr_matrix
 import time
 import datetime
 from scipy import sparse
-import time
-from sklearn.preprocessing import normalize
+import os
 
-# | users | movie | rating | time |
+# | users | movie | time | | rating |
 
 b_offset = 0
 u_offset = b_offset + 1
@@ -66,11 +64,18 @@ def convert_dataset(path):
 
             i += 1
 
-start_time = time.time()
-convert_dataset(config.dataset_path)
-end_time = time.time()
+m = 0
+for path in config.dataset_paths:
+    if os.path.isfile('{0}.npz'.format(config.csr_paths[m])):
+        m += 1
+        continue
+    start_time = time.time()
+    print(path, start_time)
+    convert_dataset(path)
+    end_time = time.time()
+    print(end_time)
+    print("--- %s seconds ---" % (end_time - start_time))
+    S = csr_matrix((values, col_indices, row_offsets))
+    sparse.save_npz(config.csr_paths[m], S)
+    m += 1
 
-print("--- %s seconds ---" % (end_time - start_time))
-
-S = csr_matrix((values, col_indices, row_offsets))
-sparse.save_npz(config.csr_path, S)
