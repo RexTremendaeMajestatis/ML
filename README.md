@@ -85,3 +85,35 @@ R2 ON TRAIN STD: 0.03726507301882258
 ```
 
 вычисления довольно трудоемкие, поэтому сначала было посчитано разбиение на кластеры, а затем рекомендации. Разбиение на кластеры хранится в `./hw2/answers/ap.json`
+
+# HW3
+```
+Train Fold 0
+Test fold 1
+RMSE 1.1491350584991595
+Test fold 2
+RMSE 1.1545439813819531
+Test fold 3
+RMSE 1.15364404131489
+Train Fold 1
+Test fold 0
+RMSE 1.1478669395588155
+Test fold 2
+RMSE 1.1540784975566614
+Test fold 3
+RMSE 1.153178552736331
+Train Fold 2
+Test fold 0
+RMSE 1.1403261226501233
+Test fold 1
+RMSE 1.1411301972313366
+Test fold 3
+RMSE 1.1416962321001476
+Train Fold 3
+Test fold 0
+RMSE 1.1405967891509188
+Test fold 1
+RMSE 1.1414008762965455
+Test fold 2
+RMSE 1.1428698433010738
+```
